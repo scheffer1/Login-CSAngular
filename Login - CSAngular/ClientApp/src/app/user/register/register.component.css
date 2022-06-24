@@ -1,0 +1,43 @@
+.container{
+  margin:auto;
+  margin-top:4rem;
+  display: flex;
+}
+
+.subbuttons{
+  height: 3rem;
+  width: 6rem;
+  font-size: 1rem;
+  margin:auto;
+  border: 1px solid;
+}
+
+form{
+  width: 100%;
+}
+
+.mat-form-field{
+  width: 100%;
+  height: 7rem;
+}
+
+.mat-card-title{
+  margin: 0.5rem 1rem 2rem 0rem;
+}
+
+mat-card{
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  position: relative;
+  padding: 0 auto auto auto;
+  margin: 1rem auto 5rem auto;
+  border-radius: 4px;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 50px -23px rgba(77,68,74,0.03) !important;
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 50px -23px rgba(77,68,74,0.03) !important;
+  max-width: 550px;
+  cursor:pointer;
+}
+
+.flexdiv{
+  display: flex;
+}

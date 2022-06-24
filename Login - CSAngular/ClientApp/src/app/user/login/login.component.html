@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-content>
+    <div class="container">
+      <form class="example-form">
+        <mat-card-title>Login</mat-card-title>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Usuário. (Seu usuário são os digitos do seu email até o "@")</mat-label>
+          <input type="text" matInput [formControl]="emailFormControl" placeholder='Usuário (Seu usuário são os digitos do seu email até o "@")' class="input" [(ngModel)]="this.service.loginBody.UserName" name="email">
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" class="input" [formControl]="passwordFormControl" [(ngModel)]="this.service.loginBody.Password" name="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="!passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required')">
+            Senha é <strong>muito pequena</strong>
+          </mat-error>
+
+        </mat-form-field>
+        <a href=""> <p>Esqueci minha senha</p> </a>
+        <div class="flexdiv">
+          <button mat-flat-button class="subbuttons btn-outline-success"
+                  [disabled]=
+                    "emailFormControl.hasError('required') ||
+                     passwordFormControl.hasError('required')"
+                  (click)="onSubmit()">Entrar</button>
+         <a [routerLink]="['/user/register']">
+           <button mat-flat-button class="subbuttons btn-outline-dark">Registrar</button>
+         </a>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

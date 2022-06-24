@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-content>
+    <div class="container">
+      <form class="example-form">
+        <mat-card-title>Registro</mat-card-title>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. example@example.com" class="input" name="email" [(ngModel)]="service.body.Email">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Por favor digite um email válido!
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input type="name" matInput [formControl]="nameFormControl" placeholder="Nome" class="input" [(ngModel)]="service.body.Name">
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Endereço</mat-label>
+          <input type="address" matInput [formControl]="addressFormControl" placeholder="Endereço" class="input" name="address" [(ngModel)]="service.body.Address">
+          <mat-error *ngIf="addressFormControl.hasError('required')">
+            Endereço é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input type="text" matInput [formControl]="phoneFormControl" placeholder="Telefone" class="input" name="Phone" mask="(00)000000000" [(ngModel)]="service.body.Phone">
+          <mat-error *ngIf="phoneFormControl.hasError('required')">
+            Phone é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input mask="000.000.000-00" type="text" matInput [formControl]="cpfFormControl" placeholder="CPF" class="input" [(ngModel)]="service.body.Cpf">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Insira sua senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" class="input" [formControl]="passwordFormControl" [(ngModel)]="service.body.Password">
+          <mat-error *ngIf="passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required')">
+            A sua senha é muito pequena!
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Senha é <strong>obrigatória</strong>
+          </mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <div class="flexdiv">
+          <button mat-flat-button class="subbuttons btn-outline-dark" (click)="onSubmit()"
+          [disabled]="(this.emailFormControl.hasError('email') &&
+        !this.emailFormControl.hasError('required')) ||
+      this.emailFormControl.hasError('required') ||
+      this.nameFormControl.hasError('required') ||
+      this.phoneFormControl.hasError('required') ||
+      this.addressFormControl.hasError('required') ||
+      cpfFormControl.hasError('minlength') &&
+      !cpfFormControl.hasError('required') ||
+      this.cpfFormControl.hasError('required') ||
+      (this.passwordFormControl.hasError('minLength') &&
+        !this.passwordFormControl.hasError('required')) ||
+      this.passwordFormControl.hasError('required')">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
