@@ -29,7 +29,7 @@ public class ApplicationUserController : ControllerBase
     [HttpPost]
     [Route("/api/Register")]
     //POST : /api/ApplicationUser/Register
-    public async Task<Object> PostApplicationUser(UserModel model)
+    public async Task<IActionResult> PostApplicationUser(UserModel model)
     {
         var applicationUser = new ApplicationUser() {
             FullName = model.Name,
@@ -74,8 +74,6 @@ public class ApplicationUserController : ControllerBase
             var token = tokenHandler.WriteToken(securityToken);
             return Ok(new { token });
         }
-        else
-            return BadRequest(new { message = "Username or password is incorrect." });
+        return BadRequest(new {message = "Username or password is incorrect."} );
     }
-
 }

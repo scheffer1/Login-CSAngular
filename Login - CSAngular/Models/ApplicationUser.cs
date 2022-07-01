@@ -8,7 +8,7 @@ namespace Login___CSAngular.Models
         [Column(TypeName ="nvarchar(150)")]
         public string FullName { get; set; }
         
-        [Column(TypeName ="nvarchar(150)")]
+        [Column(TypeName ="nvarchar(11)")]
         public string Cpf { get; set; }
         
         [Column(TypeName ="nvarchar(150)")]
